@@ -1,0 +1,47 @@
+<!-- views/success.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google SignIn</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <!-- load bootstrap css -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- load fontawesome -->
+    <style>
+      body {
+        padding-top: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="text-primary text-center">
+          <span class="fa fa-user"></span> Profile Information
+        </h1>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="well">
+              <p>
+                <strong>Id</strong>: <%= user.id && user.id%><br />
+                <strong>Email</strong>: <%= user.emails[0].value && user.emails[0].value %><br />
+                <strong>Name</strong>: <%= user.displayName && user.displayName %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <a href="/logout" class="btn btn-danger"><span class="fa fa-user"></span> Logout</a>
+        <a href="/api/mail/user/<%= user.emails[0].value %>" class="btn btn-success"><span class="fa fa-user"></span> Get User Profile</a>
+        <a href="/api/mail/drafts/<%= user.emails[0].value %>" class="btn btn-success"><span class="fa fa-user"></span> Get User Mail Drafts</a>
+        <a href="/api/mail/unread" class="btn btn-success"><span class="fa fa-user"></span> Get User Unread Mails</a>
+        <a href="/api/mail/sendToAll" class="btn btn-success"><span class="fa fa-envelope"></span> Send Mails that have no prior replies </a>
+      </div>
+    </div>
+  </body>
+</html>
